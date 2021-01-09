@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+       <title>Vas Ki Či</title>
+       <link rel="stylesheet" href="rockpaperscis.css">
+       <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+<body>
+
+    <div class="container-header">
+        <header class="header">Vas Ki Či</header>
+    </div>
+    <div class="container-results" id="game-results">
+        <div class="game-results" id="playerScore">0</div>
+        <div></div>
+        <div class="game-results" id="computerScore">0</div>
+    </div>
+    <div class="container-results-2">
+        <div class="game-results-tag" id="playerSign"></div>
+        <div class="game-results-tag" id="equalSign"></div>
+        <div class="game-results-tag" id="computerSign"></div>
+    </div>
+
+    <div class="both-results">
+        <div class="container-main-player">
+            <div class="photo-player" id="šulinys">
+                <a href="javascript:;"><img src="photos/rock.png" class="game-button-player" data-selection="šulinys" alt=rock></a>
+            </div>
+            <div class="photo-player" id="popierius">
+                <a href="javascript:;"><img src="photos/paper.png" class="game-button-player" data-selection="popierius" alt=paper></a>
+            </div>
+            <div class="photo-player" id="žirklės">
+                <a href="javascript:;"><img src="photos/scissors.png" class="game-button-player" data-selection="žirklės" alt=scissors></a>
+            </div>
+        </div>
+
+        <div class="container-middle">
+            <div class="middle-text" id="middle">
+                <--- Rinkitės 
+            </div>
+            <div class="reset-button" id="resetButton">
+                
+            </div>
+        </div>
+
+        <div class="container-main-pc">
+            <div class="photo-pc">
+                <a href="#"><img src="photos/rock.png" class="game-button-pc"></a>
+            </div>
+            <div class="photo-pc">
+                <a href="#"><img src="photos/paper.png" class="game-button-pc"></a>
+            </div>
+            <div class="photo-pc">
+                <a href="#"><img src="photos/scissors.png" class="game-button-pc"></a>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+function computerPlay(){
+return items[Math.floor(Math.random()*items.length)];
+}
+
+let items = ["šulinys", "popierius", "žirklės"];
+
+// let playerSelection = e.target.id.toUpperCase();
+let computerSelection = computerPlay();
+let player = document.querySelectorAll(".photo-player");
+let playerSelection;
+let round;
+let equalSign = document.querySelector('#equalSign');
+let playerSign = document.querySelector('#playerSign');
+let computerSign = document.querySelector('#computerSign');
+let playerScore = document.querySelector('#playerScore');
+let computerScore = document.querySelector('#computerScore');
+let winRound = document.querySelector("#middle");
+
+let roundCount = 0;
+let playerCount = 0;
+let computerCount = 0;
+
+let resetButton = document.querySelector("#resetButton");
+
+function singleRound(){  
+if (playerSelection == computerSelection){
+round = ++roundCount;
+playerScore.textContent = ++playerCount;
+computerScore.textContent = ++computerCount;
+winRound.textContent = "Lygiosios";
+equalSign.textContent = "=";
+computerSign.textContent = computerSelection;
+}
+else if (playerSelection == "šulinys" && computerSelection == "žirklės" || playerSelection == "popierius" && computerSelection == "šulinys" || playerSelection == "žirklės" && computerSelection == "popierius"){
+round = ++roundCount;
+playerScore.textContent = ++playerCount;
+winRound.textContent = "Valio!";
+equalSign.textContent = ">";
+computerSign.textContent = computerSelection;
+}
+else if (playerSelection == "šulinys" && computerSelection == "popierius" || playerSelection == "popierius" && computerSelection == "žirklės" || playerSelection == "žirklės" && computerSelection == "šulinys"){
+round = ++roundCount;
+computerScore.textContent = ++computerCount;
+winRound.textContent = "Et...";
+equalSign.textContent = "<";
+computerSign.textContent = computerSelection;
+}
+endGame();
+}
+
+player.forEach((player) => {
+player.addEventListener('click', () => {
+  playerSelection = player.id;
+  playerSign.textContent = player.id;
+  computerSign.textContent = computerSelection;
+  computerSelection = computerPlay();
+  console.log(playerSelection, computerSelection);
+});
+});
+
+$(".photo-player").on("click", function(){
+    resetGame();
+    endGame();
+    singleRound();
+});
+
+function resetGame() {
+  resetButton.addEventListener('click',() => 
+    location.reload());
+}
+
+function endGame(){
+    if (playerCount > 4){
+        winRound.textContent = "Laimėjote!";
+        resetButton.textContent = "Iš naujo?";
+    }
+else if (computerCount > 4){
+        winRound.textContent = "Pralaimėjote!";
+        resetButton.textContent = "Iš naujo?";
+    }  
+}
+
+</script>
+
+</body>
+</html>
