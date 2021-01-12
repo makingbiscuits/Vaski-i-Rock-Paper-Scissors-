@@ -8,11 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="slotmachine.min.js"></script>
+<script src="jquery.slotmachine.min.js"></script>
     </head>
 <body>
+      
+     
 
     <div class="container-header">
         <header class="header">Vas Ki Či</header>
+        <img id="pavyzdys">
+
     </div>
     <div class="container-results" id="game-results">
         <div class="game-results" id="playerScore">0</div>
@@ -33,6 +39,7 @@
             <div class="photo-player" id="popierius">
                 <a href="javascript:;"><img src="photos/paper.png" class="game-button-player" data-selection="popierius" alt=paper></a>
             </div>
+            <img id="bandymas">
             <div class="photo-player" id="žirklės">
                 <a href="javascript:;"><img src="photos/scissors.png" class="game-button-player" data-selection="žirklės" alt=scissors></a>
             </div>
@@ -86,6 +93,15 @@ let computerCount = 0;
 
 let resetButton = document.querySelector("#resetButton");
 
+
+let myPix = new Array("photos/rock.png","photos/paper.png","photos/scissors.png");
+
+function choosePic() {
+     let randomNum = Math.floor(Math.random() * myPix.length);
+     document.querySelector("#bandymas").src = myPix[randomNum];
+         }
+
+
 function singleRound(){  
 if (playerSelection == computerSelection){
 round = ++roundCount;
@@ -122,11 +138,27 @@ player.addEventListener('click', () => {
 });
 });
 
+let slotM = 0;
+
 $(".photo-player").on("click", function(){
     resetGame();
     endGame();
     singleRound();
+    $(function nudavai() {
+  let stop = setInterval(function(){
+      ++slotM;
+      if(slotM > 150){
+        clearInterval(stop);
+        slotM = 0;
+    };
+    $('#bandymas').fadeOut(100, function(){
+      $(this).html(choosePic()).fadeIn(100);
+    });
+  }, 1);
 });
+});
+
+
 
 function resetGame() {
   resetButton.addEventListener('click',() => 
@@ -143,6 +175,8 @@ else if (computerCount > 4){
         resetButton.textContent = "Iš naujo?";
     }  
 }
+
+
 
 </script>
 
