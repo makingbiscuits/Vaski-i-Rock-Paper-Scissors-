@@ -61,6 +61,7 @@
             <div class="photo-pc">
                 <a href="#"><img src="photos/paper.png" class="game-button-pc"></a>
             </div>
+            <img id="bandymasPC">
             <div class="photo-pc">
                 <a href="#"><img src="photos/scissors.png" class="game-button-pc"></a>
             </div>
@@ -100,6 +101,10 @@ function choosePic() {
      let randomNum = Math.floor(Math.random() * myPix.length);
      document.querySelector("#bandymas").src = myPix[randomNum];
          }
+function choosePicPC() {
+     let randomNum = Math.floor(Math.random() * myPix.length);
+     document.querySelector("#bandymasPC").src = myPix[randomNum];
+         }         
 
 
 function singleRound(){  
@@ -140,10 +145,12 @@ player.addEventListener('click', () => {
 
 let slotM = 0;
 
+
 $(".photo-player").on("click", function(){
     resetGame();
     endGame();
     singleRound();
+    $(".photo-player, .photo-pc").hide();
     $(function nudavai() {
   let stop = setInterval(function(){
       ++slotM;
@@ -154,10 +161,12 @@ $(".photo-player").on("click", function(){
     $('#bandymas').fadeOut(100, function(){
       $(this).html(choosePic()).fadeIn(100);
     });
+    $('#bandymasPC').fadeOut(100, function(){
+      $(this).html(choosePicPC()).fadeIn(100);
+    });
   }, 1);
 });
 });
-
 
 
 function resetGame() {
