@@ -96,9 +96,10 @@ body{
     color:white;
 }
 
-.reset-button{
+.reset-button, .round-button{
     background-color: #FF66B3;
     font-size: 1.4em;
+    width: 100px;
     margin-top: 25px;
     border-radius: 5%;
     padding: 0px;

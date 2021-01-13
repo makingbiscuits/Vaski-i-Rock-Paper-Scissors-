@@ -161,6 +161,7 @@ $(".photo-player").on("click", function(){
         clearInterval(stop);
         slotM = 0;
         $("#roundButton").show();
+        $("#middle").show();
         roundButton.textContent = "Dar?";
     };
     $('#bandymas').fadeOut(100, function(){
@@ -171,6 +172,7 @@ $(".photo-player").on("click", function(){
     });
   }, 1);
 });
+$('.header') = $(playerSelection).attr('src');
 });
 
 
@@ -179,16 +181,14 @@ function resetGame() {
     location.reload());
 }
 
-function roundGame(){
-    roundButton.addEventListener('click', () =>
-    $(".photo-player, .photo-pc").show());
-}
 
-$("#roundButton").on("click", function(){
+function roundGame(){
+    $("#roundButton").on("click", function(){
     $(".photo-player, .photo-pc").show();
     $("#bandymas, #bandymasPC").hide();
     $("#roundButton").hide();
-});
+    $("#middle").hide();
+})};
 
 
 
@@ -199,11 +199,12 @@ function endGame(){
         resetButton.textContent = "Iš naujo?";
     }
 else if (computerCount > 4){
-        $("#roundButton").hide();
         winRound.textContent = "Pralaimėjote!";
         resetButton.textContent = "Iš naujo?";
     }  
 }
+
+
 
 
 
