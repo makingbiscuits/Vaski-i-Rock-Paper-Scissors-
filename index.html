@@ -16,8 +16,8 @@
      
 
     <div class="container-header">
-        <header class="header">Vas Ki Či</header>
-        <img id="pavyzdys">
+        <header class="header">Vas Ki Či iki 5</header>
+        <img id="pavyzdys" src="">
 
     </div>
     <div class="container-results" id="game-results">
@@ -33,14 +33,14 @@
 
     <div class="both-results">
         <div class="container-main-player">
-            <div class="photo-player" id="šulinys">
+            <div class="photo-player tooltip" id="šulinys"><span class="tooltiptext">Šulinys</span>
                 <a href="javascript:;"><img src="photos/rock.png" class="game-button-player" data-selection="šulinys" alt=rock></a>
             </div>
-            <div class="photo-player" id="popierius">
+            <div class="photo-player tooltip" id="popierius"><span class="tooltiptext">Popierius</span>
                 <a href="javascript:;"><img src="photos/paper.png" class="game-button-player" data-selection="popierius" alt=paper></a>
             </div>
             <img id="bandymas">
-            <div class="photo-player" id="žirklės">
+            <div class="photo-player tooltip" id="žirklės"><span class="tooltiptext">Žirklės</span>
                 <a href="javascript:;"><img src="photos/scissors.png" class="game-button-player" data-selection="žirklės" alt=scissors></a>
             </div>
         </div>
@@ -141,6 +141,7 @@ player.addEventListener('click', () => {
   computerSign.textContent = computerSelection;
   computerSelection = computerPlay();
   console.log(playerSelection, computerSelection);
+//   document.querySelector("#pavyzdys").src = "photos/" + player.id + ".png";
 });
 });
 
@@ -172,7 +173,6 @@ $(".photo-player").on("click", function(){
     });
   }, 1);
 });
-$('.header') = $(playerSelection).attr('src');
 });
 
 

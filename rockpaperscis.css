@@ -115,6 +115,11 @@ body{
     transform: scale(1.1);
 }
 
+.round-button:hover{
+    background-color: #99FFCC;
+    transform: scale(1.1);
+}
+
 .game-button-player, .game-button-pc{
     height: auto;
     width: 100px;
@@ -124,3 +129,25 @@ body{
 .game-button-player:hover{
     transform: scale(1.2);
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #FF66B3;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    bottom: 108%;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
