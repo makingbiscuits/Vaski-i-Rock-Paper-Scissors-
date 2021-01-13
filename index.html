@@ -50,7 +50,8 @@
                 <--- Rinkitės 
             </div>
             <div class="reset-button" id="resetButton">
-                
+            </div>
+            <div class="round-button" id="roundButton">
             </div>
         </div>
 
@@ -148,15 +149,19 @@ let slotM = 0;
 
 $(".photo-player").on("click", function(){
     resetGame();
+    roundGame();
     endGame();
     singleRound();
     $(".photo-player, .photo-pc").hide();
+    $(".header").fadeIn();
     $(function nudavai() {
   let stop = setInterval(function(){
       ++slotM;
       if(slotM > 150){
         clearInterval(stop);
         slotM = 0;
+        $("#roundButton").show();
+        roundButton.textContent = "Dar?";
     };
     $('#bandymas').fadeOut(100, function(){
       $(this).html(choosePic()).fadeIn(100);
@@ -174,12 +179,27 @@ function resetGame() {
     location.reload());
 }
 
+function roundGame(){
+    roundButton.addEventListener('click', () =>
+    $(".photo-player, .photo-pc").show());
+}
+
+$("#roundButton").on("click", function(){
+    $(".photo-player, .photo-pc").show();
+    $("#bandymas, #bandymasPC").hide();
+    $("#roundButton").hide();
+});
+
+
+
 function endGame(){
     if (playerCount > 4){
+        $("#roundButton").hide();
         winRound.textContent = "Laimėjote!";
         resetButton.textContent = "Iš naujo?";
     }
 else if (computerCount > 4){
+        $("#roundButton").hide();
         winRound.textContent = "Pralaimėjote!";
         resetButton.textContent = "Iš naujo?";
     }  
