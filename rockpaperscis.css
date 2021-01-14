@@ -1,4 +1,8 @@
 body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
     margin:0;
     padding:0;
     font-family: 'Langar', cursive;
@@ -29,8 +33,8 @@ body{
     display: flex;
     flex-direction: row;
     justify-content:center;
-    padding-left: 75px;
-    padding-right: 75px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .container-results{
@@ -188,3 +192,9 @@ body{
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+@media only screen and (max-width: 800px) {
+    body {
+      background-color: lightblue;
+    }
+  }
