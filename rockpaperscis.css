@@ -206,13 +206,32 @@ body{
     .long-text{
         display: none;
     }
-    .both-results{
+    /* .both-results{
         flex-direction: column;
-    }
+    } */
     .tooltip .tooltiptext {
         visibility: visible;
         bottom: 10px;
         top: auto;
+    }
+    .container-header{
+        font-size: 28px;
+        padding-top: 5px;
+        padding-bottom: 0px;
+    }
+    .container-middle{
+        height: 50px;
+        padding-top: 10px;
+    }
+    .header{
+        font-size: 28px;
+    }
+    .container-results{
+        font-size: 2.4rem;
+        padding: 0;
+    }
+    .photo-draw{
+        justify-self: flex-start;
     }
   }
 
@@ -223,12 +242,31 @@ body{
     .long-text{
         display: none;
     }
-    .both-results{
+    /* .both-results{
         flex-direction: column;
-    }
+    } */
     .tooltip .tooltiptext {
         visibility: visible;
         bottom: 10px;
         top: auto;
+    }
+    .container-header{
+        font-size: 28px;
+        padding-top: 5px;
+        padding-bottom: 0px;
+    }
+    .container-middle{
+        height: 50px;
+        padding-top: 10px;
+    }
+    .header{
+        font-size: 28px;
+    }
+    .container-results{
+        font-size: 2.4rem;
+        padding: 0;
+    }
+    .photo-draw{
+        justify-self: flex-start;
     }
   }

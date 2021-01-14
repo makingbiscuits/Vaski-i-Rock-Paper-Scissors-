@@ -34,7 +34,7 @@ function computerPlay(){
 
 // randomize selection for animation-intervals:   
 
-let myPix = new Array("photos/šulinys.png","photos/popierius.png","photos/žirklės.png");
+let myPix = new Array("photos/šulinys.png","photos/popierius.png");
     
 function choosePic() {
     let randomNum = Math.floor(Math.random() * myPix.length);
@@ -130,6 +130,8 @@ player.addEventListener('click', () => {
     playerSign.textContent = player.id; 
     computerSign.textContent = computerSelection;
     computerSelection = computerPlay();
+    $("#game-results").hide();
+    $(".container-results-2").hide();
     console.log(playerSelection, computerSelection);
 });
 });
@@ -146,6 +148,8 @@ $(".photo-player").on("click", function(){
         $("#middle").show();
         if (playerCount < 5 && computerCount < 5) {
             $("#roundButton").fadeIn();
+            $("#game-results").fadeIn();
+            $(".container-results-2").fadeIn();
             roundButton.textContent = "Dar?";
         }
     }, 1000);
