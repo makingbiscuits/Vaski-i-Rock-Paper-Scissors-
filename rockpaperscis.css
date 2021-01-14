@@ -98,6 +98,7 @@ body{
     font-size: 30px;
     text-transform: uppercase;
     color:white;
+    text-align: center;
 }
 
 .middle-text {
@@ -193,8 +194,41 @@ body{
     visibility: visible;
 }
 
-@media only screen and (max-width: 800px) {
-    body {
-      background-color: lightblue;
+.short-text{
+    display: none;
+    text-justify: center;
+}
+
+@media only screen and (max-device-width: 768px) {
+    .short-text{
+        display: inline-block;
+    }
+    .long-text{
+        display: none;
+    }
+    .both-results{
+        flex-direction: column;
+    }
+    .tooltip .tooltiptext {
+        visibility: visible;
+        bottom: 10px;
+        top: auto;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .short-text{
+        display: inline-block;
+    }
+    .long-text{
+        display: none;
+    }
+    .both-results{
+        flex-direction: column;
+    }
+    .tooltip .tooltiptext {
+        visibility: visible;
+        bottom: 10px;
+        top: auto;
     }
   }
