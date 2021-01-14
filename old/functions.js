@@ -18,10 +18,7 @@ let playerCount = 0;
 let computerCount = 0;
     
 let resetButton = document.querySelector("#resetButton");
-
-const audioWin = new Audio("/audio/happy1.wav");
-const audioLose = new Audio("/audio/pralaimejimas.wav");
-const audioTie = new Audio("/audio/lygiosios.wav");
+let audioEffect = document.querySelector("#vaskiciAudio");
 
 
 // randomize computer move:
@@ -30,20 +27,21 @@ let items = ["šulinys", "popierius", "žirklės"];
 let computerSelection = computerPlay();
 function computerPlay(){
     return items[Math.floor(Math.random()*items.length)];
-};  
+    };
+    
 
 // randomize selection for animation-intervals:   
 
-let myPix = new Array("photos/šulinys.png","photos/popierius.png","photos/žirklės.png");
+let myPix = new Array("photos/rock.png","photos/paper.png","photos/scissors.png");
     
 function choosePic() {
     let randomNum = Math.floor(Math.random() * myPix.length);
     document.querySelector("#drawPlayer").src = myPix[randomNum];
-}
+        }
 function choosePicPC() {
     let randomNum = Math.floor(Math.random() * myPix.length);
     document.querySelector("#drawPC").src = myPix[randomNum];
-}         
+        }         
     
 
 
@@ -57,10 +55,6 @@ function singleRound(){
     winRound.textContent = "Lygiosios";
     equalSign.textContent = "=";
     computerSign.textContent = computerSelection;
-    setTimeout(function(){
-        audioTie.play();
-        console.log();
-      }, 700)
     }
     else if (playerSelection == "šulinys" && computerSelection == "žirklės" || playerSelection == "popierius" && computerSelection == "šulinys" || playerSelection == "žirklės" && computerSelection == "popierius"){
     round = ++roundCount;
@@ -68,10 +62,6 @@ function singleRound(){
     winRound.textContent = "Valio!";
     equalSign.textContent = ">";
     computerSign.textContent = computerSelection;
-    setTimeout(function(){
-        audioWin.play();
-        console.log();
-        }, 700)
     }
     else if (playerSelection == "šulinys" && computerSelection == "popierius" || playerSelection == "popierius" && computerSelection == "žirklės" || playerSelection == "žirklės" && computerSelection == "šulinys"){
     round = ++roundCount;
@@ -79,13 +69,9 @@ function singleRound(){
     winRound.textContent = "Et...";
     equalSign.textContent = "<";
     computerSign.textContent = computerSelection;
-    setTimeout(function(){
-        audioLose.play();
-        console.log();
-        }, 700)
     }
     endGame();
-}
+    }
 
 
     // show or hide paws and round results:
@@ -96,7 +82,7 @@ function roundGame(){
     $("#drawPlayer, #drawPC").hide();
     $("#roundButton").hide();
     $("#middle").hide();
-})};
+    })};
     
     
 
@@ -104,6 +90,7 @@ function roundGame(){
 
 function endGame(){
     if (playerCount > 4){
+        $("#roundButton").hide();
         winRound.textContent = "Laimėjote!";
         resetButton.textContent = "Iš naujo?";
         }
@@ -121,53 +108,54 @@ function resetGame() {
     location.reload());
 }
 
+//audio effect:
+function playAudio(){
+    audioEffect.play();
+}
 
 // calling functions on clicks, setting interval:
 
 player.forEach((player) => {
 player.addEventListener('click', () => {
     playerSelection = player.id;
-    playerSign.textContent = player.id; 
+    playerSign.textContent = player.id;
     computerSign.textContent = computerSelection;
     computerSelection = computerPlay();
     console.log(playerSelection, computerSelection);
+    //   document.querySelector("#pavyzdys").src = "photos/" + player.id + ".png"; <-- šitas parodys paspaustą žaidėjo leteną
 });
 });
+    
+let slotM = 0;
+let newvar = "well well";    
     
 $(".photo-player").on("click", function(){
     resetGame();
     roundGame();
     endGame();
     singleRound();
-    $imgid = $(this).attr('imgid');
-    $("#middle").hide();
     $(".photo-player, .photo-pc").hide();
-    setTimeout(function(){
-        $("#middle").show();
-        if (playerCount < 5 && computerCount < 5) {
-            $("#roundButton").fadeIn();
+    $(".header").fadeIn();
+    $(function() {
+    let stop = setInterval(function(){
+        ++slotM;
+        if(slotM > 150){
+            clearInterval(stop);
+            slotM = 0;
+            $("#roundButton").show();
+            $("#middle").show();
             roundButton.textContent = "Dar?";
-        }
-    }, 1000);
-    var startTime = new Date().getTime();
-    var interval = setInterval(function(){
-        if(new Date().getTime() - startTime > 1000){
-            $("#drawPlayer").fadeOut(100, function(){
-                $(this).attr("src","photos/"+$imgid+".png").fadeIn(100);
-            });
-            $('#drawPC').fadeOut(100, function(){
-                $(this).attr("src","photos/"+computerSelection+".png").fadeIn(100);
-            });
-            clearInterval(interval);
-            return;
-        }
-        $('#drawPlayer').fadeOut(100, function(){
-            $(this).html(choosePic()).fadeIn(100);
+            $("#drawPlayer").replaceWith(newvar);
+        };
+    $('#drawPlayer').fadeOut(100, function(){
+        $(this).html(choosePic()).fadeIn(100);
         });
         $('#drawPC').fadeOut(100, function(){
-            $(this).html(choosePicPC()).fadeIn(100);
+          $(this).html(choosePicPC()).fadeIn(100);
         });
-    }, 100);
+        playAudio();
+      }, 1);
+    });
 });
     
     

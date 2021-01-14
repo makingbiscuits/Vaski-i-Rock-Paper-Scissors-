@@ -8,6 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Langar&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="slotmachine.min.js"></script>
+<script src="jquery.slotmachine.min.js"></script>
     </head>
 <body>
       
@@ -15,8 +17,10 @@
 
     <div class="container-header">
         <header class="header">Vas Ki Či iki 5</header>
-        
-
+        <img id="pavyzdys" src="">
+        <audio id="vaskiciAudio" src="audio/vaskici.wav" type="audio/wav" preload="auto">
+            Your browser does not support the audio element.
+          </audio>
     </div>
     <div class="container-results" id="game-results">
         <div class="game-results" id="playerScore">0</div>
@@ -31,17 +35,15 @@
 
     <div class="both-results">
         <div class="container-main-player">
-            <div class="photo-player tooltip" id="šulinys" imgid="šulinys"><span class="tooltiptext">Šulinys</span>
-                <a href="javascript:;"><img src="photos/šulinys.png" class="game-button-player" alt=šulinys></a>
+            <div class="photo-player tooltip" id="šulinys"><span class="tooltiptext">Šulinys</span>
+                <a href="javascript:;"><img src="photos/rock.png" class="game-button-player" data-selection="šulinys" alt=rock></a>
             </div>
-            <div class="photo-player tooltip" id="popierius" imgid="popierius"><span class="tooltiptext">Popierius</span>
-                <a href="javascript:;"><img src="photos/popierius.png" class="game-button-player" alt=popierius></a>
+            <div class="photo-player tooltip" id="popierius"><span class="tooltiptext">Popierius</span>
+                <a href="javascript:;"><img src="photos/paper.png" class="game-button-player" data-selection="popierius" alt=paper></a>
             </div>
-            <div class="photo-draw">
-                <img id="drawPlayer">
-            </div>
-            <div class="photo-player tooltip" id="žirklės" imgid="žirklės"><span class="tooltiptext">Žirklės</span>
-                <a href="javascript:;"><img src="photos/žirklės.png" class="game-button-player" alt=žirklės></a>
+            <img id="drawPlayer">
+            <div class="photo-player tooltip" id="žirklės"><span class="tooltiptext">Žirklės</span>
+                <a href="javascript:;"><img src="photos/scissors.png" class="game-button-player" data-selection="žirklės" alt=scissors></a>
             </div>
         </div>
 
@@ -57,16 +59,14 @@
 
         <div class="container-main-pc">
             <div class="photo-pc">
-                <a href="#"><img src="photos/šulinys.png" class="game-button-pc"></a>
+                <a href="#"><img src="photos/rock.png" class="game-button-pc"></a>
             </div>
             <div class="photo-pc">
-                <a href="#"><img src="photos/popierius.png" class="game-button-pc"></a>
+                <a href="#"><img src="photos/paper.png" class="game-button-pc"></a>
             </div>
-            <div class="photo-draw">
-                <img id="drawPC">
-            </div>
+            <img id="drawPC">
             <div class="photo-pc">
-                <a href="#"><img src="photos/žirklės.png" class="game-button-pc"></a>
+                <a href="#"><img src="photos/scissors.png" class="game-button-pc"></a>
             </div>
         </div>
     </div>
