@@ -19,9 +19,9 @@ let computerCount = 0;
     
 let resetButton = document.querySelector("#resetButton");
 
-const audioWin = new Audio("/audio/happy1.wav");
-const audioLose = new Audio("/audio/pralaimejimas.wav");
-const audioTie = new Audio("/audio/lygiosios.wav");
+// const audioWin = new Audio("/audio/happy1.wav");
+// const audioLose = new Audio("/audio/pralaimejimas.wav");
+// const audioTie = new Audio("/audio/lygiosios.wav");
 
 
 // randomize computer move:
@@ -58,9 +58,9 @@ function singleRound(){
     equalSign.textContent = "=";
     computerSign.textContent = computerSelection;
     setTimeout(function(){
-        audioTie.play();
+        document.getElementById('audioLygiosios').play();
         console.log();
-      }, 700)
+        }, 700)
     }
     else if (playerSelection == "šulinys" && computerSelection == "žirklės" || playerSelection == "popierius" && computerSelection == "šulinys" || playerSelection == "žirklės" && computerSelection == "popierius"){
     round = ++roundCount;
@@ -69,7 +69,7 @@ function singleRound(){
     equalSign.textContent = ">";
     computerSign.textContent = computerSelection;
     setTimeout(function(){
-        audioWin.play();
+        document.getElementById('audioHappy').play();
         console.log();
         }, 700)
     }
@@ -80,7 +80,7 @@ function singleRound(){
     equalSign.textContent = "<";
     computerSign.textContent = computerSelection;
     setTimeout(function(){
-        audioLose.play();
+        document.getElementById('audioPralaimejimas').play();
         console.log();
         }, 700)
     }
