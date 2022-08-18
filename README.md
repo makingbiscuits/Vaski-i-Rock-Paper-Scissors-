@@ -2,7 +2,7 @@
 
 ✨ ✨ This is a game Rock, Paper, Scissors in Lithuanian✨ ✨ 
 
-Please, find it in <a href="https://github.com/makingbiscuits/Vaski-i-Rock-Paper-Scissors-/deployments/activity_log?environment=github-pages">github pages</a>.
+Please, find it in <a href="https://makingbiscuits.github.io/Vaski-i-Rock-Paper-Scissors-/">github pages</a>.
 
 Works best on computer.
 
